@@ -49,15 +49,24 @@ WHERE `phone` IS NULL;
 
 -- CONTARE QUANTI ISCRITTI CI SONO STATI OGNI ANNO
 
-
+SELECT COUNT(*) AS `n_enrolled_students`, YEAR(`enrolment_date`) AS `year`
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
 
 -- CONTARE GLI INSEGNANTI CHE HANNO L'UFFICIO NELLO STESSI EDIFICIO
 
-
+SELECT COUNT(*) AS `n_teachers`, `office_address`
+FROM `teachers`
+GROUP BY `office_address`;
 
 -- CALCOLARE LA MEDIA DEI VOTI DI OGNI APPELLO D'ESAME
 
-
+SELECT AVG(`vote`), `exam_id`
+FROM `exam_student`
+GROUP BY `exam_id`;
 
 -- CONTARE QUANTI CORSI DI LAUREA CI SONO PER OGNI DIPARTIMENTO
 
+SELECT COUNT(*) AS `n_degrees`, `department_id`
+FROM `degrees`
+GROUP BY `department_id`;
