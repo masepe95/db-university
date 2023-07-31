@@ -77,7 +77,11 @@ GROUP BY `department_id`;
 
 -- Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
 
-
+SELECT S.`name`, S.`surname`, S.`registration_number`, D.`name`
+FROM `students` AS S
+JOIN `degrees` AS D
+ON S.`degree_id` = D.`id`
+WHERE S.`degree_id` = 53;
 
 -- Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
 
