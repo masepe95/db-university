@@ -151,3 +151,8 @@ WHERE DEP.`id` = 5
 
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
 
+SELECT COUNT(`vote`), `student_id`, E.`course_id` AS `c_id`
+FROM `exam_student` AS ES 
+JOIN `exams` AS E
+ON ES.`exam_id` = E.`id`
+GROUP BY ES.`student_id`, E.`course_id`;
