@@ -151,8 +151,11 @@ WHERE DEP.`id` = 5
 
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
 
-SELECT COUNT(`vote`), `student_id`, E.`course_id` AS `c_id`
-FROM `exam_student` AS ES 
+SELECT `students`.`name`AS 'Nome Studente', `students`.`surname`AS 'Cognome Studente', `courses`.`name`AS 'Nome Corso', COUNT(`exam_student`.*) AS 'Numero Tentativi', MAX(`exam_student`.`name`) AS 'max_vote'
+FROM `students`
+JOIN `exam_student`ON `students`.`id` = `exam_student`.`student_id`
 JOIN `exams` AS E
 ON ES.`exam_id` = E.`id`
+FROM `exam_student` AS ES 
 GROUP BY ES.`student_id`, E.`course_id`;
+(NOT COMPLETE TO FIX)
